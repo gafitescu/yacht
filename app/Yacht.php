@@ -23,4 +23,15 @@ class Yacht extends Model
         'deleted_at',
         'next_maintenance_date'
     ];
+
+
+    public function client()
+    {
+        return $this->belongsTo('App\Client');
+    }
+
+    public function history()
+    {
+        return $this->hasMany('App\History')->orderBy("created_at", "desc");
+    }
 }

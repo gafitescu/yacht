@@ -21,4 +21,9 @@ class Client extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    public function yachts()
+    {
+        return $this->hasMany('App\Yacht');
+    }
 }

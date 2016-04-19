@@ -18,4 +18,9 @@ class History extends Model
         'created_at',
         'deleted_at'
     ];
+
+    public function yacht()
+    {
+        return $this->belongsTo('App\Yacht');
+    }
 }
