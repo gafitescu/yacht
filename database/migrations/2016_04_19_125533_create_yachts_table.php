@@ -12,7 +12,7 @@ class CreateYachtsTable extends Migration
      */
     public function up()
     {
-        Schema::table('yachts', function (Blueprint $table) {
+        Schema::create('yachts', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('client_id')->unsigned();

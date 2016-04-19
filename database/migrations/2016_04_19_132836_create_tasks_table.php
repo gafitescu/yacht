@@ -15,7 +15,7 @@ class CreateTasksTable extends Migration
         /**
          * List all maintenance tasks
          */
-        Schema::table('tasks', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
 
             /**
