@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Task extends Model
 {
+    const CHECKING = 'CHECKING';
+    const UPGRADING = 'UPGRADING';
+    const UNDER_REPAIR = 'UNDER_REPAIR';
+
     use SoftDeletes;
 
     protected $fillable = [

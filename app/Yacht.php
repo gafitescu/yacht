@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Yacht extends Model
 {
+    const SAILING = 'SAILING';
+    const CHECKING = 'CHECKING';
+    const UPGRADING = 'UPGRADING';
+    const UNDER_REPAIR = 'UNDER_REPAIR';
+
     use SoftDeletes;
 
     protected $fillable = [

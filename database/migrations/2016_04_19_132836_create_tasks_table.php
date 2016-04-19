@@ -31,11 +31,7 @@ class CreateTasksTable extends Migration
             $table->string('name', 50);
             $table->string('description', 255)->nullable();
             $table->smallInteger('average_duration')->unsigned()->default(8);
-            /**
-             * add next_maintenance_date so the company can call in advance to notify the client
-             * to bring the ship
-             */
-            $table->date('next_maintenance_date');
+
             $table->softDeletes();
             $table->timestamps();
         });
