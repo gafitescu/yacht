@@ -35,6 +35,8 @@ $factory->define(App\Yacht::class, function ($faker) {
         'name'     => $faker->numerify('Boat ####'),
         'registration_code'   => substr($faker->swiftBicNumber, 0, 10),
         'next_maintenance_date'         => $faker->dateTimeThisDecade(),
+        'created_at' => $faker->dateTimeThisDecade(),
+        'updated_at' => $faker->dateTimeThisDecade()
     ];
 });
 
@@ -49,7 +51,9 @@ $factory->define(App\Task::class, function ($faker) {
         ]),
         'name'     => $faker->bs,
         'description'         => $faker->catchPhrase,
-        'average_duration'         => $faker->numberBetween(1, 100)
+        'average_duration'         => $faker->numberBetween(1, 100),
+        'created_at' => $faker->dateTimeThisDecade(),
+        'updated_at' => $faker->dateTimeThisDecade()
     ];
 });
 
@@ -62,6 +66,6 @@ $factory->define(App\History::class, function ($faker) {
     return [
         'yacht_id'   => $yacht->id,
         'task_id'    => $task->id,
-        'created_at' => $faker->dateTimeThisDecade(),
+        'created_at' => $faker->dateTimeThisDecade()
     ];
 });

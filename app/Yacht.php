@@ -39,4 +39,19 @@ class Yacht extends Model
     {
         return $this->hasMany('App\History')->orderBy("created_at", "desc");
     }
+
+    /**
+     * Return all the yacht that are on docks parked , on checking and under
+     * repair
+     *
+     * @return mixed
+     */
+    public function onMaintenance()
+    {
+        return  $this->whereIn('status', [
+            self::CHECKING,
+            self::UPGRADING,
+            self::UNDER_REPAIR,
+        ])->orderBy('updated_at', 'DESC');
+    }
 }
