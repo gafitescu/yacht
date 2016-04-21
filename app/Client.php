@@ -26,4 +26,9 @@ class Client extends Model
     {
         return $this->hasMany('App\Yacht');
     }
+
+    public function descending()
+    {
+        return  $this->orderBy('created_at', 'DESC');
+    }
 }

@@ -1,3 +1,7 @@
 body {
     padding-top: 5rem;
 }
+
+#next_maintenance_date {
+    width: 100px;
+}

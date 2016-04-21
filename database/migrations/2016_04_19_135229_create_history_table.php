@@ -15,9 +15,9 @@ class CreateHistoryTable extends Migration
         Schema::create('history', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('yacht_id')->unsigned();
-            $table->foreign('yacht_id')
-                ->references('id')->on('yachts')
+            $table->integer('job_id')->unsigned();
+            $table->foreign('job_id')
+                ->references('id')->on('jobs')
                 ->onDelete('cascade');
 
             $table->integer('task_id')->unsigned();

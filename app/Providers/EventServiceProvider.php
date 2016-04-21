@@ -12,8 +12,13 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
+        'App\Events\JobInProgressEvent' => [
+            'App\Listeners\AddToHistoryListener',
+             // App\Listeners\NotifyClient
+        ],
+        'App\Events\JobDoneEvent' => [
+            'App\Listeners\UpdateYachtStatusListener',
+            // App\Listeners\NotifyClientToPickUpBoat
         ],
     ];
 }

@@ -24,8 +24,25 @@ class History extends Model
     /* don't need the updated_at so we override it*/
     public function setUpdatedAt($value){}
 
-    public function yacht()
+
+    public function job()
     {
-        return $this->belongsTo('App\Yacht');
+        return $this->belongsTo('App\Job');
+    }
+
+    public function task()
+    {
+        return $this->belongsTo('App\Task');
+    }
+
+    public function descending()
+    {
+        return  $this->orderBy('created_at', 'DESC');
+    }
+
+    public function scopeForJob($query, $id)
+    {
+        return $query->where('job_id', $id)
+            ->orderBy('created_at', 'DESC');
     }
 }

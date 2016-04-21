@@ -1,24 +1,27 @@
 @extends('layouts.master')
 
 @section('content')
-    <table  id="analytics" class="table-bordered table-striped table">
+    <h2>Latest activity</h2>
+    <table  id="dashboard" class="table-bordered table-striped table">
         <thead>
             <tr>
                 <td class="col-md-1"><strong>Id</strong></td>
-                <td class="col-md-4"><strong>Name</strong></td>
-                <td class="col-md-3"><strong>Registration code</strong></td>
-                <td class="col-md-2"><strong>Status</strong></td>
-                <td class="col-md-2"><strong>Last update</strong></td>
+                <td class="col-md-1"><strong>Yacht Name</strong></td>
+                <td class="col-md-2"><strong>Yacht registration code</strong></td>
+                <td class="col-md-1"><strong>Task code</strong></td>
+                <td class="col-md-4"><strong>Task name</strong></td>
+                <td class="col-md-3"><strong>Started</strong></td>
             </tr>
         </thead>
         <tbody>
         @foreach($paginator as $data)
             <tr>
                 <td>{{$data->id}}</td>
-                <td>{{$data->name}}</td>
-                <td>{{$data->registration_code}}</td>
-                <td>{{ucfirst(strtolower($data->status))}}</td>
-                <td>{{$data->updated_at->diffForHumans()}}</td>
+                <td>{{$data->job->yacht->name}}</td>
+                <td>{{$data->job->yacht->registration_code}}</td>
+                <td>{{$data->task->code}}</td>
+                <td>{{$data->task->name}}</td>
+                <td>{{$data->created_at->diffForHumans()}}</td>
             </tr>
         @endforeach
         </tbody>

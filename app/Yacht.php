@@ -25,19 +25,26 @@ class Yacht extends Model
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at',
-        'next_maintenance_date'
+        'deleted_at'
     ];
 
+
+
+    protected static function boot()
+    {
+        static::creating(function ($model) {
+            $model->status = self::SAILING;
+        });
+    }
 
     public function client()
     {
         return $this->belongsTo('App\Client');
     }
 
-    public function history()
+    public function jobs()
     {
-        return $this->hasMany('App\History')->orderBy("created_at", "desc");
+        return $this->hasMany('App\Job')->orderBy("created_at", "desc");
     }
 
     /**
@@ -53,5 +60,10 @@ class Yacht extends Model
             self::UPGRADING,
             self::UNDER_REPAIR,
         ])->orderBy('updated_at', 'DESC');
+    }
+
+    public function descending()
+    {
+        return  $this->orderBy('created_at', 'DESC');
     }
 }

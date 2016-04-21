@@ -57,14 +57,31 @@ $factory->define(App\Task::class, function ($faker) {
     ];
 });
 
+
+$factory->define(App\Job::class, function ($faker) {
+
+    $yacht =  factory(App\Yacht::class)->create();
+    return [
+        'yacht_id' => $yacht->id,
+        'status'=> $faker->randomElement([
+            App\Job::JOB_NEW,
+            App\Job::JOB_IN_PROGRESS,
+            App\Job::JOB_COMPLETED
+        ]),
+        'client_notes'     => $faker->catchPhrase,
+        'created_at' => $faker->dateTimeThisDecade(),
+        'updated_at' => $faker->dateTimeThisDecade()
+    ];
+});
+
 $factory->define(App\History::class, function ($faker) {
 
 
-    $yacht =  factory(App\Yacht::class)->create();
+    $job =  factory(App\Job::class)->create();
     $task =  factory(App\Task::class)->create();
 
     return [
-        'yacht_id'   => $yacht->id,
+        'job_id'   => $job->id,
         'task_id'    => $task->id,
         'created_at' => $faker->dateTimeThisDecade()
     ];

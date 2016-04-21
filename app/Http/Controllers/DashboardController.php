@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Yacht;
+use App\History;
 
 class DashboardController extends Controller
 {
-    public function inProgress(Yacht $yacht)
+    public function history(History $history)
     {
-        $paginator = $yacht->onMaintenance()->paginate(env('ROWS_PER_PAGE', 10));
+        $paginator = $history->descending()
+            ->paginate(env('ROWS_PER_PAGE', 10));
         return view('dashboard', compact('paginator'));
     }
 }
